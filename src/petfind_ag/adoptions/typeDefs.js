@@ -9,6 +9,15 @@ export const adoptionsTypeDef = `
         successfully: Boolean!
     }
 
+    type CreateDeleteAdoptionResponse {
+        message: String!
+    }
+
+    type UpdateAdoptionResponse {
+        message: String!
+        updatedAdoption: Adoption!
+    }
+
     input AdoptionInput {
         id_pet: Int!
         id_user: Int!
@@ -25,7 +34,7 @@ export const adoptionsQueries = `
   `;
 
 export const adoptionsMutations = `
-  createAdoption(adoption: AdoptionInput!): Adoption!
-  updateAdoption(id_adoption: ID!, adoption: AdoptionInput!): Adoption!
-  deleteAdoption(id_adoption: ID!): Int
+  createAdoption(adoption: AdoptionInput!): CreateDeleteAdoptionResponse!
+  updateAdoption(id_adoption: ID!, adoption: AdoptionInput!): UpdateAdoptionResponse
+  deleteAdoption(id_adoption: ID!): CreateDeleteAdoptionResponse!
   `;
