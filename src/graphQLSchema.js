@@ -10,19 +10,30 @@ import {
 	adoptionsTypeDef
 } from './petfind_ag/adoptions/typeDefs';
 
+import {
+	PetMutations,
+	PetQueries,
+	PetTypeDef
+} from './petfind_ag/pets/typeDefs';
+
+import resolvers from './petfind_ag/pets/resolvers'
+
 import adoptionResolvers from './petfind_ag/adoptions/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
-		adoptionsTypeDef
+		adoptionsTypeDef,
+		PetTypeDef
 	],
 	[
-		adoptionsQueries
+		adoptionsQueries,
+		PetQueries
 	],
 	[
-		adoptionsMutations
+		adoptionsMutations,
+		PetMutations
 	]
 );
 
@@ -31,6 +42,7 @@ export default makeExecutableSchema({
 	typeDefs: mergedTypeDefs,
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
-		adoptionResolvers
+		adoptionResolvers,
+		resolvers
 	)
 });

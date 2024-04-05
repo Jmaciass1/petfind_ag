@@ -1,3 +1,6 @@
 export const url = 'host.docker.internal'
 export const port = '3000'
 export const entryPoint = 'adoptions'
+export const url2 = 'host.docker.internal'
+export const port2 = '8080'
+export const entryPoint2 = 'pets'
